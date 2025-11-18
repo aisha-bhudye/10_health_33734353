@@ -6,7 +6,6 @@
 </head>
 <body>
     <h1>Appointments</h1>
-    <form action="/appointments/book" method="POST"></form>
     <% if (appointments.length === 0) { %>
         <p>No appointments found.</p>
     <% } else { %>
@@ -35,9 +34,6 @@
             </tbody>
         </table>
     <% } %>
-
-    <p><a href="/appointments/book">Book New Appointment</a> | 
-       <a href="/appointments/search">Search Appointments</a></p>
 </body>
 </html>
 
