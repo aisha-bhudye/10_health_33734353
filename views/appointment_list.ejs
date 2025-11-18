@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments List</title>
+</head>
+<body>
+    <h1>Appointments</h1>
+    <form action="/appointments/book" method="POST"></form>
+    <% if (appointments.length === 0) { %>
+        <p>No appointments found.</p>
+    <% } else { %>
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% appointments.forEach(appointment => { %>
+                    <tr>
+                        <td><%= appointment.id %></td>
+                        <td><%= appointment.name %></td>
+                        <td><%= appointment.email %></td>
+                        <td><%= appointment.date.toISOString().slice(0, 10) %></td>
+                        <td><%= appointment.time %></td>
+                        <td><%= appointment.created_at.toISOString().replace('T', ' ').slice(0, 19) %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+
+    <p><a href="/appointments/book">Book New Appointment</a> | 
+       <a href="/appointments/search">Search Appointments</a></p>
+</body>
+</html>
+
