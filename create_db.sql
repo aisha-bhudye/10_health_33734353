@@ -12,6 +12,36 @@ CREATE TABLE IF NOT EXISTS appointments (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Create users table (matches your auth.js logic)
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    first VARCHAR(100) NOT NULL,
+    last VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    hashedPassword VARCHAR(255) NOT NULL,   -- bcrypt hash column
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Audit table for login attempts
+CREATE TABLE IF NOT EXISTS login_audit (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100),
+    login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    success BOOLEAN NOT NULL,
+    ip_address VARCHAR(50)
+);
+
+-- Default user (username: gold, password: smiths)
+INSERT INTO users (username, first, last, email, hashedPassword)
+VALUES (
+    'gold',
+    'Gold',
+    'Smith',
+    'gold@example.com',
+    '$2b$10$Zf2f8okX6wJpVCft56Er/uW.Qr7D5EKOHqMriaDIZLCFwlpQJw/QG'
+);
+
 -- Create the application user
 CREATE USER IF NOT EXISTS 'clinic_app'@'localhost' IDENTIFIED BY 'qwertyuiop';
 GRANT ALL PRIVILEGES ON clinic_db.* TO 'clinic_app'@'localhost';

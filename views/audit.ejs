@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Audit Log</title>
+</head>
+<body>
+
+    <h1>Audit Log</h1>
+
+    <% if (audits.length === 0) { %>
+        <p>No login activity recorded yet.</p>
+    <% } else { %>
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Login Time</th>
+                <th>Success?</th>
+                <th>IP Address</th>
+            </tr>
+
+            <% audits.forEach(audit => { %>
+                <tr>
+                    <td><%= audit.id %></td>
+                    <td><%= audit.username %></td>
+                    <td><%= audit.login_time.toISOString().replace('T', ' ').slice(0, 19) %></td>
+                    <td><%= audit.success ? '✔️ Yes' : '❌ No' %></td>
+                    <td><%= audit.ip_address %></td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } %>
+
+    <p><a href="/auth/login">Back to Login</a></p>
+
+</body>
+</html>
