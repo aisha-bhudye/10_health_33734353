@@ -1,30 +1,30 @@
 
-# Outline
+Outline
 
-The **Clinic Appointment Manager** is a web application that allows patients to book, view, and search for appointments at a clinic. It also includes a user authentication system for staff members, tracking login attempts in an audit log. The application is built using **Node.js** with **Express** as the web framework, **MySQL** for the database, and **EJS** for server-side templates. Users can submit appointment requests via forms, while staff can manage users and view logs of login activity.
+The Clinic Appointment Manager is a web application that allows patients to book, view, and search for appointments at a clinic. It also includes a user authentication system for staff members, tracking login attempts in an audit log. The application is built using Node.js with Express as the web framework, MySQL for the database, and EJS for server-side templates. Users can submit appointment requests via forms, while staff can manage users and view logs of login activity.
 
 ---
 
-# Architecture
+Architecture
 
-**Technologies & Components**:
+Technologies & Components:
 
 * **Application tier**: Node.js, Express, EJS templates, bcrypt for password hashing
 * **Data tier**: MySQL database with tables for `appointments`, `users`, and `login_audit`
 
-**High-level Architecture Diagram:**
+High-level Architecture Diagram:
 
 
 
-# Data Model
+Data Model
 
 The database has three main tables:
 
-1. **appointments** – Stores patient appointments (id, name, email, date, time, created_at)
-2. **users** – Stores staff user accounts (id, username, first, last, email, hashedPassword, created_at)
-3. **login_audit** – Logs login attempts (id, username, login_time, success, ip_address)
+1. appointments – Stores patient appointments (id, name, email, date, time, created_at)
+2. users – Stores staff user accounts (id, username, first, last, email, hashedPassword, created_at)
+3. login_audit – Logs login attempts (id, username, login_time, success, ip_address)
 
-**Data Model Diagram:**
+Data Model Diagram:
 
 ```
 users
@@ -54,26 +54,26 @@ login_audit
 
 ---
 
-# User Functionality
+User Functionality
 
-1. **Book Appointment** – Users fill a form (`/appointments/book`) with name, email, date, and time. On submission, the appointment is stored in the database.
-2. **List Appointments** – Users or staff can view all appointments (`/appointments/list`) in a table sorted by date and time.
-3. **Search Appointments** – Users can search for appointments by patient name (`/appointments/search`).
-4. **User Authentication** – Staff can register (`/auth/register`) and log in (`/auth/login`). Passwords are hashed with bcrypt.
-5. **Audit Log** – All login attempts are stored in `login_audit`, accessible via `/auth/audit`. This logs username, IP address, success status, and timestamp.
+1. Book Appointment – Users fill a form (`/appointments/book`) with name, email, date, and time. On submission, the appointment is stored in the database.
+2. List Appointments – Users or staff can view all appointments (`/appointments/list`) in a table sorted by date and time.
+3. Search Appointments – Users can search for appointments by patient name (`/appointments/search`).
+4. User Authentication – Staff can register (`/auth/register`) and log in (`/auth/login`). Passwords are hashed with bcrypt.
+5. Audit Log – All login attempts are stored in `login_audit`, accessible via `/auth/audit`. This logs username, IP address, success status, and timestamp.
 
-*Example Screenshot Descriptions:*
+Example Screenshot Descriptions:
 
-* Booking form submission
-* Appointment list table
-* Login page
-* Audit log showing successful and failed login attempts
+Booking form submission
+Appointment list table
+Login page
+Audit log showing successful and failed login attempts
 
 ---
 
 # Advanced Techniques
 
-1. **Password Hashing with bcrypt** – All passwords are stored securely using bcrypt. Example from `auth.js`:
+1. Password Hashing with bcrypt** – All passwords are stored securely using bcrypt. Example from `auth.js`:
 
 ```js
 const bcrypt = require('bcrypt');
@@ -81,7 +81,7 @@ const saltRounds = 10;
 bcrypt.hash("smiths", saltRounds, (err, hash) => console.log(hash));
 ```
 
-2. **Database Connection Pooling** – Using `mysql2.createPool` to manage multiple simultaneous connections efficiently in `index.js`:
+2. Database Connection Pooling – Using `mysql2.createPool` to manage multiple simultaneous connections efficiently in `index.js`:
 
 ```js
 const db = mysql.createPool({
@@ -94,7 +94,7 @@ const db = mysql.createPool({
 global.db = db;
 ```
 
-3. **Audit Logging** – Every login attempt is logged with SQL insertions directly in the `/auth/loggedin` route:
+3. Audit Logging – Every login attempt is logged with SQL insertions directly in the `/auth/loggedin` route:
 
 ```js
 db.query(
@@ -103,7 +103,7 @@ db.query(
 );
 ```
 
-4. **Dynamic Templating** – EJS is used to render appointment lists and login pages dynamically with server-side data (`views/appointment_list.ejs`).
+4. Dynamic Templating – EJS is used to render appointment lists and login pages dynamically with server-side data (`views/appointment_list.ejs`).
 
 ---
 
