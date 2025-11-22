@@ -3,7 +3,6 @@
 <head>
     <title>Registered Users</title>
     <link rel="stylesheet" href="/css/style.css">
-
 </head>
 <body>
 
@@ -20,14 +19,15 @@
                 <th>Email</th>
             </tr>
 
-            <% users.forEach(user => { %>
+            <% for (let i = 0; i < users.length; i++) {
+                let user = users[i]; %>
                 <tr>
                     <td><%= user.username %></td>
                     <td><%= user.first %></td>
                     <td><%= user.last %></td>
                     <td><%= user.email %></td>
                 </tr>
-            <% }) %>
+            <% } %>
         </table>
     <% } %>
 

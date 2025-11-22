@@ -3,7 +3,6 @@
 <head>
     <title>Login Audit Log</title>
     <link rel="stylesheet" href="/css/style.css">
-
 </head>
 <body>
 
@@ -21,15 +20,24 @@
                 <th>IP Address</th>
             </tr>
 
-            <% audits.forEach(audit => { %>
+            <% for (let i = 0; i < audits.length; i++) { 
+                let audit = audits[i]; %>
                 <tr>
                     <td><%= audit.id %></td>
                     <td><%= audit.username %></td>
-                    <td><%= audit.login_time.toISOString().replace('T', ' ').slice(0, 19) %></td>
-                    <td><%= audit.success ? '✔️ Yes' : '❌ No' %></td>
+                    <td><%= audit.login_time.toLocaleString() %></td>
+
+                    <td>
+                        <% if (audit.success) { %>
+                             Yes
+                        <% } else { %>
+                             No
+                        <% } %>
+                    </td>
+
                     <td><%= audit.ip_address %></td>
                 </tr>
-            <% }) %>
+            <% } %>
         </table>
     <% } %>
 
