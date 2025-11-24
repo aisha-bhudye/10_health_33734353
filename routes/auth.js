@@ -156,14 +156,14 @@ const redirectLogin = (req, res, next) => {
 // REGISTER FORM
 // ----------------------------------------
 router.get("/register", (req, res) => {
-    res.render("register", { errors: [] });
+    res.render("register", {clinicData: req.app.locals.clinicData, errors: [] });
 });
 
 // ----------------------------------------
 // REGISTER USER
 // ----------------------------------------
 router.post(
-    "/register",
+    "/registered",
 
     // VALIDATION RULES
     [
@@ -193,7 +193,7 @@ router.post(
 
         if (!errors.isEmpty()) {
             // Re-render form WITH validation errors
-            return res.render("register", { errors: errors.array() });
+            return res.render("register", { clinicData: req.app.locals.clinicData, errors: errors.array() });
         }
 
         // Sanitise fields

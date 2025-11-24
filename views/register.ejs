@@ -3,12 +3,23 @@
 <head>
     <title>Register</title>
     <link rel="stylesheet" href="/css/style.css">
-
 </head>
+
 <body>
     <h1>User Registration</h1>
 
-    <form action="/auth/register" method="POST">
+    <% if (errors.length > 0) { %>
+        <div style="color: red; margin-bottom: 20px;">
+            <ul>
+                <% errors.forEach(function(err) { %>
+                    <li><%= err.msg %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+    <form action="/auth/registered" method="POST">
+
         <label>Username:</label><br>
         <input type="text" name="username" required><br><br>
 
@@ -27,6 +38,8 @@
         <button type="submit">Register</button>
     </form>
 
-    <p><a href="/auth/login">Already have an account? Login</a></p>
+    <p>
+        <a href="/auth/login">Already have an account? Login</a>
+    </p>
 </body>
 </html>

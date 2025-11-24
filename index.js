@@ -31,6 +31,9 @@ app.use(expressSanitizer());
 // Static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.locals.clinicData = {clinicName: "Clinic Manager"}
+
+
 // // Database connection pool
 // const db = mysql.createPool({
 //     host: 'localhost',
