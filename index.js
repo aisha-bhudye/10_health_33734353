@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const mysql = require('mysql2');  // plain mysql
 require('dotenv').config();
+var session = require('express-session');
+const expressSanitizer = require("express-sanitizer");
 
 const app = express();
 const port = 8000;
@@ -14,6 +16,18 @@ app.set('views', path.join(__dirname, 'views'));
 // Body parser
 app.use(express.urlencoded({ extended: true }));
 
+app.use(
+  session({
+    secret: 'somerandomstuff',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 600000 // 10 minutes
+    }
+  })
+);
+
+app.use(expressSanitizer());
 // Static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
