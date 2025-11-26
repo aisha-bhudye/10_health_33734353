@@ -76,8 +76,7 @@ mysql --version
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/10_health_[YOUR_ID].git
-cd 10_health_[YOUR_ID]
+git clone 
 ```
 
 ### 2. Install Dependencies
@@ -210,7 +209,7 @@ Or access via link provided in links.txt
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 10_health_33734353/
@@ -242,9 +241,26 @@ Or access via link provided in links.txt
 ```
 
 ---
+### AI Declaration
+
+I acknowledge the use of [1] ChatGPT (https://chat.openai.com/) to [2] assist with identifying and debugging errors in my code, clarifying programming concepts, and suggesting improvements to code structure. I entered the following prompts on Accessed: 16 November 2025 - 4 Decemeber 2025:
+
+[3] Example prompts used:
+
+“Explain why this error message appears in my code and how to fix it.”
+
+“Suggest a clearer way to structure this function.”
+
+“What is the correct syntax for implementing this feature?”
+
+[4] The output from the generative artificial intelligence was used only to understand errors, explore potential solutions, and improve the organisation of my code. No AI-generated code was copied or included in the final submitted application. All implementation decisions and final code are my own.
+
+## Reference
+
+OpenAI (2025) ChatGPT [Generative AI model]. Available at: https://chat.openai.com/ (Accessed: 16 November 2025 - 4 Decemeber 2025).
 
 
-## 🎓 Academic Information
+##  Academic Information
 
 **Module:** Dynamic Web Applications  
 **Institution:** Goldsmiths, University of London  
@@ -252,4 +268,4 @@ Or access via link provided in links.txt
 
 ---
 
-**Last Updated:** November 2025  
+
