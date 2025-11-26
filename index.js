@@ -43,12 +43,20 @@ app.locals.clinicData = {clinicName: "Clinic Manager"}
 //     connectionLimit: 10
 // });
 
+// const db = mysql.createPool({
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASS,
+//     database: process.env.DB_NAME,
+//     connectionLimit: process.env.DB_CONN_LIMIT || 10
+// });
+
 const db = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-    connectionLimit: process.env.DB_CONN_LIMIT || 10
+  host: process.env.HEALTH_HOST,
+  user: process.env.HEALTH_USER,
+  password: process.env.HEALTH_PASSWORD,
+  database: process.env.HEALTH_DATABASE,
+  connectionLimit: process.env.DB_CONN_LIMIT || 10
 });
 
 // Make db accessible globally

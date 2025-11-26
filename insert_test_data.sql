@@ -1,5 +1,5 @@
 -- Use the clinic database
-USE clinic_db;
+USE health;
 
 -- Clear existing appointments
 DELETE FROM appointments;

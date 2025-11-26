@@ -1,6 +1,6 @@
 -- Create database for Clinic Appointment Manager
-CREATE DATABASE IF NOT EXISTS clinic_db;
-USE clinic_db;
+CREATE DATABASE IF NOT EXISTS health;
+USE health;
 
 -- Create appointments table
 CREATE TABLE IF NOT EXISTS appointments (
@@ -12,14 +12,14 @@ CREATE TABLE IF NOT EXISTS appointments (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create users table (matches your auth.js logic)
+-- Create users table
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) UNIQUE NOT NULL,
     first VARCHAR(100) NOT NULL,
     last VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    hashedPassword VARCHAR(255) NOT NULL,   -- bcrypt hash column
+    hashedPassword VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -41,9 +41,3 @@ VALUES (
     'gold@example.com',
     '$2b$10$Zf2f8okX6wJpVCft56Er/uW.Qr7D5EKOHqMriaDIZLCFwlpQJw/QG'
 );
-
--- Create the application user
-CREATE USER IF NOT EXISTS 'clinic_app'@'localhost' IDENTIFIED BY 'qwertyuiop';
-GRANT ALL PRIVILEGES ON clinic_db.* TO 'clinic_app'@'localhost';
-
-FLUSH PRIVILEGES;
