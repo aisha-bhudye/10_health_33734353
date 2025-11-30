@@ -72,5 +72,8 @@ app.use('/appointments', appointmentsRoutes);
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+const apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes);
+
 // Start server
 app.listen(port, () => console.log(`Clinic app running on http://localhost:${port}`));
