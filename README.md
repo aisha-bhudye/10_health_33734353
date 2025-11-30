@@ -153,6 +153,36 @@ Or access via link provided in links.txt
         └── style.css           # Application styles
 ```
 
+## 🛣️ API Routes
+
+**API Query Parameters:**
+
+The `/api/appointments` endpoint supports multiple query parameters that can be combined:
+
+- `search` - Search by patient name (e.g., `?search=john`)
+- `date` - Filter by appointment date (e.g., `?date=2025-11-20`)
+- `sort` - Sort results by `name` or `date` (e.g., `?sort=name`)
+
+**Examples:**
+```bash
+# Get all appointments
+http://localhost:8000/api/appointments
+
+# Search for "john"
+http://localhost:8000/api/appointments?search=john
+
+# Get appointments on specific date
+http://localhost:8000/api/appointments?date=2025-11-20
+
+# Search and sort
+http://localhost:8000/api/appointments?search=smith&sort=date
+
+# Get statistics
+http://localhost:8000/api/stats
+```
+
+---
+
 ---
 ### AI Declaration
 
