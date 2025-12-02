@@ -138,6 +138,7 @@ Or access via link provided in links.txt
 │   └── index.js                 # Route handlers for appointments and auth
 │   └── appointments.js 
 |   └── auth.js 
+|   └── api.js 
 ├── views/
 │   ├── layout.ejs               # Home page
 │   ├── about.ejs               # About page

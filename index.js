@@ -1,7 +1,7 @@
 // index.js - Clinic Appointment Manager
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql2');  // plain mysql
+const mysql = require('mysql2');  
 require('dotenv').config();
 var session = require('express-session');
 const expressSanitizer = require("express-sanitizer");

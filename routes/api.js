@@ -2,15 +2,10 @@
 const express = require("express");
 const router = express.Router();
 
-// ========================================
 // API ROUTES - JSON responses
-// ========================================
 
-// ----------------------------------------
-// GET ALL APPOINTMENTS (Base route - like /api/books)
+// GET ALL APPOINTMENTS 
 // Route: /api/appointments
-// Optional query parameters: search, date, sort
-// ----------------------------------------
 router.get('/appointments', function (req, res, next) {
     // Get query parameters
     const searchName = req.query.search;
@@ -61,10 +56,10 @@ router.get('/appointments', function (req, res, next) {
     });
 });
 
-// ----------------------------------------
+
 // GET APPOINTMENT STATISTICS
 // Route: /api/stats
-// ----------------------------------------
+
 router.get('/stats', function (req, res, next) {
     // Query database to get statistics
     let sqlquery = `
