@@ -8,7 +8,7 @@ const expressSanitizer = require("express-sanitizer");
 
 const app = express();
 const port = 8000;
-
+app.set('trust proxy', 1)
 // EJS setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
