@@ -20,20 +20,24 @@
 
     <form action="/auth/registered" method="POST">
 
-        <label>Username:</label><br>
-        <input type="text" name="username" required><br><br>
+        <label>Username:</label>
+        <input type="text" name="username" required>
 
-        <label>First Name:</label><br>
-        <input type="text" name="first" required><br><br>
+        <label>First Name:</label>
+        <input type="text" name="first" required>
 
-        <label>Last Name:</label><br>
-        <input type="text" name="last" required><br><br>
+        <label>Last Name:</label>
+        <input type="text" name="last" required>
 
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
+        <label>Email:</label>
+        <input type="email" name="email" required>
 
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
+        <label>Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <p id="strengthOutput" style="font-weight:bold; margin-top:5px;">
+            Password Strength: <span>Weak</span>
+        </p>
 
         <button type="submit">Register</button>
     </form>
@@ -41,5 +45,44 @@
     <p>
         <a href="/auth/login">Already have an account? Login</a>
     </p>
+
+    <script>
+        const passwordField = document.getElementById("password");
+        const strengthText = document.querySelector("#strengthOutput span");
+
+        passwordField.addEventListener("input", function () {
+            const password = passwordField.value;
+            let strength = "Weak";
+            let color = "#c0392b"; // red
+
+            // Simple length check
+            if (password.length >= 8) {
+                strength = "Medium";
+                color = "#f39c12"; // orange
+            }
+
+            // Check for numbers
+            const hasNumber = password.includes("0") || password.includes("1") || password.includes("2") ||
+                              password.includes("3") || password.includes("4") || password.includes("5") ||
+                              password.includes("6") || password.includes("7") || password.includes("8") ||
+                              password.includes("9");
+
+            // Check for symbols
+            const hasSymbol = password.includes("!") || password.includes("@") || password.includes("#") ||
+                              password.includes("$") || password.includes("%") || password.includes("^") ||
+                              password.includes("&") || password.includes("*");
+
+            // Strong password rule
+            if (password.length >= 10 && hasNumber && hasSymbol) {
+                strength = "Strong";
+                color = "#27ae60"; // green
+            }
+
+            strengthText.innerText = strength;
+            strengthText.style.color = color;
+        });
+    </script>
+
 </body>
 </html>
+

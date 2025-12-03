@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const rateLimit = require("express-rate-limit");
 
 const { check, validationResult } = require("express-validator");
 
@@ -14,6 +15,12 @@ const redirectLogin = (req, res, next) => {
         next();
     }
 };
+
+const loginLimiter = rateLimit({
+    windowMs: 60 * 1000,
+    max: 5,
+    message: "Too many login attempts. Please try again later."
+});
 
 // REGISTER FORM
 router.get("/register", (req, res) => {
@@ -101,7 +108,7 @@ router.get("/login", (req, res) => {
 });
 
 // LOGIN PROCESSING
-router.post("/login", (req, res, next) => {
+router.post("/login",loginLimiter, (req, res, next) => {
     const { username, password } = req.body;
     const ipAddress = req.ip;
 
